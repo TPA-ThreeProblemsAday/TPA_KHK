@@ -27,7 +27,7 @@ public class Boj_1106 {
         for (int i = 0; i <= C; i++) {
             for (int j = 0; j <= N; j++) {
                 if (i == 0 || j == 0) {
-                    customer[j][i] = 10000; // 최솟값 비교를 위해 최댓값으로 초기화
+                    customer[j][i] = 100000; // 최솟값 비교를 위해 최댓값으로 초기화
                     continue;
                 }
 
