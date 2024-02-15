@@ -28,10 +28,12 @@ public class Boj_21922 {
                 }
             }
         }
+        // 에어컨이 0개일 땐 굳이 돌 필요가 없다
         System.out.print(airConditioner.isEmpty() ? 0 : findSeat());
     }
 
     static int findSeat() {
+        // 민상이가 앉을 자리의 개수 반환
         int cnt = 0;
         boolean[][] visited = new boolean[N][M];
         int r, c, dir, num;
@@ -51,21 +53,20 @@ public class Boj_21922 {
                     // 방향 바꾸는 처리
                     num = lab[r][c];
                     if (0 < num && num < 9) {
-                        if (num <= 2) {
+                        if (num <= 2) { // 1이나 2번 물건이 있을 때
                             if (num % 2 == dir % 2) dir = (dir + 2) % 4;
-                        } else {
+                        } else {    // 3이나 4번 물건이 있을 때
                             if (num % 2 == dir % 2) dir = ((dir + 4) - 1) % 4;
                             else dir = (dir + 1) % 4;
                         }
                     }
-
                     r += dr[dir];
                     c += dc[dir];
 
                 } while (r >= 0 && r < N && c >= 0 && c < M && lab[r][c] != 9);
+                // 범위를 나갔거나 에어컨 자리로 오면 더이상 돌지 않는다
             }
         }
-
         return cnt;
     }
 }
